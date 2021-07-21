@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import { List, Button, Checkbox, Input } from 'antd'
 import './App.css';
+import Todo from '../models/Todo'
+import { DeleteOutlined } from '@ant-design/icons'
 
 const data = [
   {
@@ -34,9 +36,8 @@ function App() {
           <List.Item>
             <List.Item.Meta
             />
-            <Checkbox></Checkbox>
-            {item.content}
-            <Button type="primary">Button</Button>
+            <Checkbox>{item.content}</Checkbox>
+            <Button type="danger"><DeleteOutlined /></Button>
           </List.Item>
         )}
       />

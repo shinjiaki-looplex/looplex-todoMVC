@@ -1,16 +1,32 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-color: #110d47;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#logo {
+  height: 120px;
+}
+
+#title {
+  color: #ffffff;
+}
+
+.input {
+  width: 80%;
+}
+
+.list {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .App-header {

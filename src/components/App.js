@@ -1,13 +1,8 @@
-import { List, Button, Checkbox, Input } from 'antd'
 import './App.css';
-import { observer } from 'mobx-react-lite'
-import { DeleteOutlined } from '@ant-design/icons'
-
-import TodoAntd from './TodoAntd';
-import TodoListAntd from './TodoListAntd';
-import { TodoItem, TodoList } from '../models/Todo';
-import { onSnapshot } from "mobx-state-tree"
 import { useState } from 'react'
+import { Input } from 'antd'
+import { observer } from 'mobx-react-lite'
+
 import TodoListView from './TodoListView'
 
 const App = observer(({ store }) => {
@@ -21,11 +16,6 @@ const App = observer(({ store }) => {
     setTodo('')
   }
 
-  function handleRemoveClick (ev) {
-    ev.preventDefault()
-    todo.removeItem()
-  }
-
   return (
     <div className="App">
       <header className="header">
@@ -35,33 +25,17 @@ const App = observer(({ store }) => {
 
       <Input
         onPressEnter={handleSubmit}
-        className="input-nhead"
+        className="input"
         placeholder='What needs to be done?'
         name='todo'
         value={todo}
         onChange={ev => setTodo(ev.target.value)}
       />
 
-      {/* <List
-        className="list"
-        footer={<div>Footer</div>}
-        bordered
-        dataSource={store.todos}
-        renderItem={todos => (
-          <List.Item>
-            <Checkbox >{todos.title}</Checkbox>
-            <Button type="danger" onClick={handleRemoveClick} ><DeleteOutlined /></Button>
-          </List.Item>
-        )}
-      /> */}
-
       <TodoListView
         store={store}
-        todo={todo}
         onChange={ev => setTodo(ev.target.value)}
       />
-
-      Total Left {store.itemsLeft}
     </div>
   );
 })

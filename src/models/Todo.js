@@ -1,4 +1,4 @@
-import { types, getParent, destroy, getSnapshot } from "mobx-state-tree"
+import { types, getParent, destroy } from "mobx-state-tree"
 
 function slugify(x) {
   return encodeURIComponent(x.toLowerCase().replace(/\s+/gim, '-'))
@@ -34,6 +34,13 @@ export const TodoList = types.model({
   },
   remove(item) {
     destroy(item)
+  },
+  clearCompleted() {
+    for(let i = 0; i < self.todos.length; i++) {
+      if (self.todos[i].isDone) {
+        self.todos[i].removeItem()
+      }
+    }
   }
 }))
 .views(self => ({

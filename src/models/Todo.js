@@ -1,15 +1,13 @@
-import { types, getParent, destroy } from "mobx-state-tree"
+import { types, getParent, destroy, getSnapshot } from "mobx-state-tree"
 
-// const todo = {
-//   "id": 1,
-//   "title": "Passear com o cachorro",
-//   "isDone": false,
-// }
+function slugify(x) {
+  return encodeURIComponent(x.toLowerCase().replace(/\s+/gim, '-'))
+}
 
 export const TodoItem = types.model({
-  id: types.identifierNumber,
-  title: types.string,
-  isDone: types.boolean,
+  id: types.identifier,
+  title: "",
+  isDone: true,
 })
 .actions(self => ({
   editTitle(newTitle) {
@@ -23,31 +21,23 @@ export const TodoItem = types.model({
   }
 }))
 
-export const TodoStore = types.model({
+export const TodoList = types.model({
   todos: types.array(TodoItem),
-  selectedTodo: types.reference(TodoItem)
 })
 .actions(self => ({
-  add(item) {
-    self.todos.push(item)
+  add(title) {
+    self.todos.push({
+      id: slugify(title),
+      title: title,
+      isDone: false,
+    })
   },
   remove(item) {
     destroy(item)
   }
 }))
-
-// create a store with a normalized snapshot
-const storeInstance = TodoStore.create({
-  todos: [
-    {
-      id: 47,
-      title: "Get coffee",
-      isDone: false,
-    }
-  ],
-  selectedTodo: "47"
-})
-
-// because `selectedTodo` is declared to be a reference, it returns the actual Todo node with the matching identifier
-console.log(storeInstance.selectedTodo.title)
-// prints "Get coffee"
+.views(self => ({
+  get itemsLeft() {
+    return self.todos.filter(todo => !todo.isDone).length
+  }
+}))

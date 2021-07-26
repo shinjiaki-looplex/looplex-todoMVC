@@ -24,6 +24,12 @@
   width: 80%;
 }
 
+.input-nhead {
+  margin-top: 30px;
+  width: 70%;
+  height: 40px;
+}
+
 .list {
   width: 70%;
   margin: 0 auto;

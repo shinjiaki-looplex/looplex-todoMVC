@@ -36,9 +36,18 @@ export const TodoList = types.model({
     destroy(item)
   },
   clearCompleted() {
-    for(let i = 0; i < self.todos.length; i++) {
+    console.log(self.todos.length)
+    for(let i = (self.todos.length - 1); i >= 0; i--) {
+      console.log(i)
       if (self.todos[i].isDone) {
         self.todos[i].removeItem()
+      }
+    }
+  },
+  selectAll() {
+    for(let i = 0; i < self.todos.length; i++) {
+      if (!self.todos[i].isDone) {
+        self.todos[i].toggleCheckbox()
       }
     }
   }

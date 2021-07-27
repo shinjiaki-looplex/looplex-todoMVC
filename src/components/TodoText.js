@@ -21,7 +21,7 @@ const TodoText = observer(({ todo }) => {
   }
 
   return (
-    <Text {...textAttrbs} >{todo.title}</Text>
+    <Text {...textAttrbs} className='text'>{todo.title}</Text>
   )
 })
 

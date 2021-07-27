@@ -1,7 +1,9 @@
 import './App.css';
 import { useState } from 'react'
-import { Input } from 'antd'
+import { Button, Input } from 'antd'
 import { observer } from 'mobx-react-lite'
+
+import { CheckSquareOutlined } from '@ant-design/icons';
 
 import TodoListView from './TodoListView'
 
@@ -26,7 +28,12 @@ const App = observer(({ store }) => {
       <Input
         onPressEnter={handleSubmit}
         className="input"
-        placeholder='What needs to be done?'
+        prefix={
+          <Button onClick={store.selectAll} type="link" style={{ transform: 'translateX(-4px)' }}>
+            <CheckSquareOutlined style={{ fontSize: '18px' }} />
+          </Button>
+        }
+        placeholder={'What needs to be done?'}
         name='todo'
         value={todo}
         onChange={ev => setTodo(ev.target.value)}

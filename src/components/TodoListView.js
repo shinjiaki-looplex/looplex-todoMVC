@@ -31,8 +31,10 @@ const TodoListView = observer(({ store }) => {
       dataSource={store.todos}
       renderItem={todo => (
         <List.Item>
-          <Checkbox checked={todo.isDone} onChange={todo.toggleCheckbox} ></Checkbox>
-          <TodoText todo={todo} />
+          <div>
+            <Checkbox checked={todo.isDone} onChange={todo.toggleCheckbox} ></Checkbox>
+            <TodoText todo={todo} />
+          </div>
           <Button type="danger" onClick={todo.removeItem} ><DeleteOutlined /></Button>
         </List.Item>
       )}

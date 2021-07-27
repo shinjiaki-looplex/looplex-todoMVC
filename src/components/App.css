@@ -31,6 +31,10 @@
   margin: 0 auto;
 }
 
+.text {
+  margin-left: 24px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

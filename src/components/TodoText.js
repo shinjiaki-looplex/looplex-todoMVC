@@ -1,13 +1,12 @@
-import { observer } from "mobx-react-lite";
+import { observer } from 'mobx-react-lite'
 
-import { Typography } from "antd";
+import { Typography } from 'antd'
 
 const { Text } = Typography
 
 const TodoText = observer(({ todo }) => {
-
   let textAttrbs = {}
-  if(todo.isDone) {
+  if (todo.isDone) {
     textAttrbs = {
       type: 'secondary',
       delete: true

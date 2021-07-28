@@ -3,9 +3,8 @@ import { useState } from 'react'
 import { Button, Input } from 'antd'
 import { observer } from 'mobx-react-lite'
 
-import { CheckSquareOutlined } from '@ant-design/icons'
-
 import TodoListView from './TodoListView'
+import SelectAllIcon from './SelectAllIcon'
 
 const App = observer(({ store }) => {
   const [todoTitle, setTodoTitle] = useState('')
@@ -13,9 +12,15 @@ const App = observer(({ store }) => {
   function handleSubmit (ev) {
     ev.preventDefault()
     store.add(todoTitle)
-    console.log(todoTitle)
-    console.log(store.toJSON())
     setTodoTitle('')
+  }
+
+  function handleSelectAll () {
+    if (store.itemsLeft === 0) {
+      store.selectAll(false)
+    } else {
+      store.selectAll(true)
+    }
   }
 
   return (
@@ -29,8 +34,8 @@ const App = observer(({ store }) => {
         onPressEnter={handleSubmit}
         className='input'
         prefix={
-          <Button onClick={store.selectAll} type='link' style={{ transform: 'translateX(-4px)' }}>
-            <CheckSquareOutlined style={{ fontSize: '18px' }} />
+          <Button onClick={handleSelectAll} type='link' style={{ transform: 'translateX(-4px)' }}>
+            <SelectAllIcon store={store} />
           </Button>
         }
         placeholder='What needs to be done?'
@@ -39,8 +44,10 @@ const App = observer(({ store }) => {
         onChange={ev => setTodoTitle(ev.target.value)}
       />
 
+
+
       <TodoListView
-        todos={store.todos}
+        store={store}
         onChange={ev => setTodoTitle(ev.target.value)}
       />
     </div>

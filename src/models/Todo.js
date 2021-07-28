@@ -38,24 +38,30 @@ export const TodoList = types
       destroy(item)
     },
     clearCompleted () {
-      console.log(self.todos.length)
-      for (let i = (self.todos.length - 1); i >= 0; i--) {
-        console.log(i)
-        if (self.todos[i].isDone) {
-          self.todos[i].removeItem()
-        }
-      }
+      // console.log(self.todos.length)
+      // for (let i = (self.todos.length - 1); i >= 0; i--) {
+      //   console.log(i)
+      //   if (self.todos[i].isDone) {
+      //     self.todos[i].isDone = false
+      //     self.todos[i].removeItem()
+      //   }
+      // }
+      // console.log(self)
+      self.todos.forEach(todo => {if (todo.isDone) {
+        todo.isDone = false
+        todo.removeItem()
+      }})
     },
-    selectAll () {
-      for (let i = 0; i < self.todos.length; i++) {
-        if (!self.todos[i].isDone) {
-          self.todos[i].toggleCheckbox()
-        }
-      }
+    selectAll (allDone) {
+      self.todos.forEach(todo => todo.isDone = allDone)
     }
   }))
   .views(self => ({
     get itemsLeft () {
       return self.todos.filter(todo => !todo.isDone).length
-    }
+    },
+    // getfiltered todos
+    // numberOfPeopleOlderThan(age) {
+    //   return self.users.filter(user => user.age > age).length
+    // } 
   }))

@@ -32,7 +32,19 @@
 }
 
 .text {
-  margin-left: 24px;
+  width: 100%;
+  text-align: left;
+}
+
+.ant-typography.ant-typography-edit-content.text {
+  transform: translateY(5px);
+  height: 28px;
+}
+
+.ant-list-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .App-header {

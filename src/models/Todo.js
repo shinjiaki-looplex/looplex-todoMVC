@@ -60,8 +60,12 @@ export const TodoList = types
     get itemsLeft () {
       return self.todos.filter(todo => !todo.isDone).length
     },
-    // getfiltered todos
-    // numberOfPeopleOlderThan(age) {
-    //   return self.users.filter(user => user.age > age).length
-    // } 
+    getFilteredTodos (filter) {
+      const states = {
+        all: self.todos,
+        active: self.todos.filter(todo => !todo.isDone),
+        completed: self.todos.filter(todo => todo.isDone)
+      }
+      return states[filter]
+    } 
   }))

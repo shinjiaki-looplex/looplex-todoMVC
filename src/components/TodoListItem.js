@@ -22,7 +22,7 @@ const TodoListItem = observer(({ todo }) => {
 
   function handleRemoveClick (ev) {
     ev.preventDefault()
-    todo.toggleCheckbox()
+    // todo.toggleCheckbox()
     todo.removeItem()
   }
 

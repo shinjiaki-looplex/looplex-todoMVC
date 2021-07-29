@@ -44,8 +44,6 @@ const App = observer(({ store }) => {
         onChange={ev => setTodoTitle(ev.target.value)}
       />
 
-
-
       <TodoListView
         store={store}
         onChange={ev => setTodoTitle(ev.target.value)}

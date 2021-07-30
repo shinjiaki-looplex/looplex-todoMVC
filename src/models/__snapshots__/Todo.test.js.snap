@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can snapshot the list 1`] = `
+Object {
+  "todos": Array [
+    Object {
+      "id": "item-1",
+      "isDone": false,
+      "title": "item 2",
+    },
+  ],
+}
+`;
+
+exports[`can snapshot the list 2`] = `
+Array [
+  Object {
+    "todos": Array [
+      Object {
+        "id": "item-1",
+        "isDone": false,
+        "title": "item 1",
+      },
+    ],
+  },
+  Object {
+    "todos": Array [
+      Object {
+        "id": "item-1",
+        "isDone": false,
+        "title": "item 2",
+      },
+    ],
+  },
+]
+`;

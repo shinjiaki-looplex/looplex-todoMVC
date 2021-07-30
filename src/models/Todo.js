@@ -38,19 +38,11 @@ export const TodoList = types
       destroy(item)
     },
     clearCompleted () {
-      // console.log(self.todos.length)
-      // for (let i = (self.todos.length - 1); i >= 0; i--) {
-      //   console.log(i)
-      //   if (self.todos[i].isDone) {
-      //     self.todos[i].isDone = false
-      //     self.todos[i].removeItem()
-      //   }
-      // }
-      // console.log(self)
-      self.todos.forEach(todo => {if (todo.isDone) {
-        todo.isDone = false
-        todo.removeItem()
-      }})
+      self.todos.forEach(todo => {
+        if (todo.isDone) {
+          todo.removeItem()
+        }
+      })
     },
     selectAll (allDone) {
       self.todos.forEach(todo => todo.isDone = allDone)
@@ -67,5 +59,5 @@ export const TodoList = types
         completed: self.todos.filter(todo => todo.isDone)
       }
       return states[filter]
-    } 
+    }
   }))

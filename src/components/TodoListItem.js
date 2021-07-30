@@ -1,4 +1,4 @@
-import { observer } from "mobx-react-lite";
+import { observer } from 'mobx-react-lite'
 
 import { List, Checkbox, Button, Typography } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
@@ -15,21 +15,20 @@ const TodoListItem = observer(({ todo }) => {
   } else {
     textAttrbs = {
       editable: {
-        onChange: todo.editTitle,
+        onChange: todo.editTitle
       }
     }
   }
 
   function handleRemoveClick (ev) {
     ev.preventDefault()
-    // todo.toggleCheckbox()
     todo.removeItem()
   }
 
   return (
-    <List.Item style={{gap: '24px'}}>
+    <List.Item style={{ gap: '24px' }}>
       <Checkbox checked={todo.isDone} onChange={todo.toggleCheckbox} />
-      <Text {...textAttrbs} ellipsis="true" className="text" >{todo.title}</Text>
+      <Text {...textAttrbs} ellipsis='true' className='text'>{todo.title}</Text>
       <Button type='danger' onClick={handleRemoveClick}><DeleteOutlined /></Button>
     </List.Item>
   )

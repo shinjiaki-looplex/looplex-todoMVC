@@ -6,13 +6,13 @@ import TodoListItem from './TodoListItem'
 
 const TodoListView = observer(({ store }) => {
   const [filter, setFilter] = useState('all')
-  
+
   function handleFilterChange (ev) {
     const filtered = ev.target.value
     setFilter(filtered)
   }
-  
-  function handleClearComplete(ev) {
+
+  function handleClearComplete (ev) {
     ev.preventDefault()
     store.clearCompleted()
   }
@@ -34,10 +34,8 @@ const TodoListView = observer(({ store }) => {
         </>
       }
       bordered
-      dataSource={store.getFilteredTodos(filter)} //store.todos
-      renderItem={todo => (
-        <TodoListItem todo={todo} />
-      )}
+      dataSource={ store.getFilteredTodos(filter) } // store.todos
+      renderItem={ todo => <TodoListItem todo={todo} /> }
     />
   )
 })
